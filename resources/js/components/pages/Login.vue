@@ -12,7 +12,7 @@
             </md-card-content>
             <md-card-content>
                 <md-field>
-                    <label for="email">Password</label>
+                    <label for="password">Password</label>
                     <md-input type="password" name="password" id="password" autocomplete="off" v-model="form.password"/>
                 </md-field>
             </md-card-content>

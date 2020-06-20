@@ -4,9 +4,11 @@ const user = getLocalUser();
 
 export default {
     state: {
+        baseApiUrl: "http://localhost:8000/api",
         currentUser: user,
         isLoggedIn: !!user,
         auth_error: null,
+        news: []
     },
     getters: {
         isLoggedIn(state) {
@@ -21,7 +23,6 @@ export default {
             state.auth_error = null;
         },
         loginSuccess(state, payload) {
-            console.log(state, payload);
             state.auth_error = null;
             state.isLoggedIn = true;
             state.currentUser = payload.data;
