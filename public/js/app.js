@@ -53092,7 +53092,6 @@ __webpack_require__.r(__webpack_exports__);
 function login(credentials) {
   return new Promise(function (res, rej) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/auth/login', credentials).then(function (response) {
-      // setAuthorization(response.data.access_token);
       res(response.data);
     })["catch"](function (err) {
       rej("Wrong email or password");
