@@ -1,9 +1,8 @@
 <template>
     <div id="main">
-        <div class="content">
-            <router-view></router-view>
-        </div>
+        <router-view></router-view>
     </div>
+
 </template>
 
 <script>
