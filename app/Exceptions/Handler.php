@@ -2,11 +2,15 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponseTrait;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponseTrait;
     /**
      * A list of the exception types that are not reported.
      *
@@ -50,6 +54,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof NotFoundHttpException){
+            return $this->returnErrorResponse('this route not found', Response::HTTP_NOT_FOUND);
+        }
         return parent::render($request, $exception);
     }
 }
