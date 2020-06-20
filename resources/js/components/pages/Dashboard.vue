@@ -1,8 +1,9 @@
 <template>
     <div class="container">
         <Header></Header>
-        <div>
-            {{welcome}}
+        <div style="padding: 20px">
+            Welcome <strong>Mr.{{currentUser.user.name}}</strong> in your dashboard <br>
+            <router-link to="/news">News</router-link>
         </div>
     </div>
 </template>
@@ -12,12 +13,12 @@
 
     export default {
         name: "dashboard",
-        components:{
-          Header
+        components: {
+            Header
         },
         computed: {
-            welcome() {
-                return this.$store.getters.welcome
+            currentUser() {
+                return this.$store.getters.currentUser
             }
         }
     }
