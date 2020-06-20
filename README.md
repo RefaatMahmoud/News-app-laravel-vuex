@@ -2,10 +2,13 @@
 
 ### Backend
 - Login/Logout using passport
+- apply seeder to create two users & factory for news related to users
 - News CRUD operation with validation 
 
 ### Frontend
 - Login/Logout using Vuex
+- List products for logged user
+- apply Vue Router for navigation and Vue Material as UI design
 - Create/Delete products but without vuex
 
 ### what next for me ?
