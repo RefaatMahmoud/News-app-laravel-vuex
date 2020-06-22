@@ -9,10 +9,11 @@
 - Login/Logout using Vuex
 - List products for logged user
 - apply Vue Router for navigation and Vue Material as UI design
-- Create/Delete products but without vuex
+- List/Create/Delete products using Vuex
 
 ### what next for me ?
-- apply full CRUD with Vuex in news and apply validation in frontend 
+- apply update news using Vuex
+- apply interceptor in Vuex
 - apply unit testing in backend using php unit
 - apply unit testing in frontend using jest
 
