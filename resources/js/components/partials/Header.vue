@@ -2,7 +2,7 @@
     <header>
         <md-toolbar class="md-accent">
             <h3 class="md-title" style="flex: 1">News App</h3>
-            <p v-if="currentUser">{{currentUser}}</p>
+            <p style="padding-top:18px;" v-if="currentUser">{{currentUser}}</p>
             <md-menu md-size="medium" md-align-trigger>
                 <md-button md-menu-trigger>
                     <md-icon>more_vert</md-icon>
