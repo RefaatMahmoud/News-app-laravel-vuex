@@ -65,7 +65,7 @@ class NewsController extends Controller
                         $data['title'] = $request->title;
                     }
                     if ($request->has('body')) {
-                        $data['body'] = $request->title;
+                        $data['body'] = $request->body;
                     }
                     $news->update($data);
                 }

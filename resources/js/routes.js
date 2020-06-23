@@ -3,6 +3,7 @@ import Login from "./components/pages/Login";
 import MainNews from "./components/pages/news/MainNews";
 import NewsList from "./components/pages/news/NewsList";
 import NewsCreate from "./components/pages/news/NewsCreate";
+import NewsUpdate from "./components/pages/news/NewsUpdate";
 
 export const routes = [
     {
@@ -14,7 +15,7 @@ export const routes = [
     },
     {
         path: "/login",
-        component: Login
+        component: Login        
     },
     {
         path: "/news",
@@ -27,6 +28,10 @@ export const routes = [
             {
                 path: "create",
                 component: NewsCreate
+            },
+            {
+                path: "edit/:id",
+                component: NewsUpdate
             }
         ]
     }

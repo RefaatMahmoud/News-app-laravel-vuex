@@ -20,6 +20,9 @@ export default {
         },
         getNews(state) {
             return state.news;
+        },
+        baseApiUrl(state) {
+            return state.baseApiUrl;
         }
     },
     mutations: {
@@ -40,14 +43,21 @@ export default {
             state.isLoggedIn = false;
             state.currentUser = null;
         },
-        getNews(state,payload){
-          state.news = payload
+        getNews(state, payload) {
+            state.news = payload;
         },
-        createNew(state,payload){
-            state.news.push(payload)
+        createNew(state, payload) {
+            state.news.push(payload);
         },
-        removeNew(state,id){
-            state.news = state.news.filter((item) => item.id != id)
+        removeNew(state, id) {
+            state.news = state.news.filter(item => item.id != id);
+        },
+        updateNew(state,data){
+            state.news = state.news.map( (item) => {
+                if(item.id == data.id){
+                    item = data;
+                }
+            })
         }
     },
     actions: {
@@ -56,39 +66,55 @@ export default {
         },
         getNews(context) {
             let api_url = `${context.state.baseApiUrl}/news`;
-            axios.get(api_url, {
-                headers: {
-                    Authorization: `Bearer ${context.state.currentUser.token}`
-                }
-            })
-            .then((response) => {
-                context.commit('getNews',response.data.data)
-            })
-            .catch((error) => console.log(error));
-        },
-        createNew(context,data){
-            let api_url = `${context.state.baseApiUrl}/news`;
-            axios.post(api_url,data, {
-                headers: {
-                    Authorization: `Bearer ${context.state.currentUser.token}`
-                }
-            })
-            .then((response) => {
-                context.commit('createNew',response.data.data)
-            })
-            .catch((error) => console.log(error));
-        },
-        removeNew(context,id){
-            let api_url = `${context.state.baseApiUrl}/news/${id}`;
-            let confirm = window.confirm('Are you sure to delete this new');
-            if(confirm){
-                axios.delete(api_url, {
+            axios
+                .get(api_url, {
                     headers: {
                         Authorization: `Bearer ${context.state.currentUser.token}`
                     }
                 })
-                .then(context.commit('removeNew',id))
-                .catch((error) => console.log(error));
+                .then(response => {
+                    context.commit("getNews", response.data.data);
+                })
+                .catch(error => console.log(error));
+        },
+        createNew(context, data) {
+            let api_url = `${context.state.baseApiUrl}/news`;
+            axios
+                .post(api_url, data, {
+                    headers: {
+                        Authorization: `Bearer ${context.state.currentUser.token}`
+                    }
+                })
+                .then(response => {
+                    context.commit("createNew", response.data.data);
+                })
+                .catch(error => console.log(error));
+        },
+        updateNew(context, data) {
+            let api_url = `${context.state.baseApiUrl}/news/${data.id}`;
+            axios
+                .patch(api_url, data, {
+                    headers: {
+                        Authorization: `Bearer ${context.state.currentUser.token}`
+                    }
+                })
+                .then((response) => {
+                    context.commit('updateNew',response.data.data)
+                })
+                .catch(error => console.log(error));
+        },
+        removeNew(context, id) {
+            let api_url = `${context.state.baseApiUrl}/news/${id}`;
+            let confirm = window.confirm("Are you sure to delete this new");
+            if (confirm) {
+                axios
+                    .delete(api_url, {
+                        headers: {
+                            Authorization: `Bearer ${context.state.currentUser.token}`
+                        }
+                    })
+                    .then(context.commit("removeNew", id))
+                    .catch(error => console.log(error));
             }
         }
     }

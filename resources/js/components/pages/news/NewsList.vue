@@ -18,6 +18,9 @@
               <a href="javascript:void(0)" @click.prevent="remove(new_item.id)">
                 <span class="material-icons text-danger">delete</span>
               </a>
+              <router-link :to="{path:`news/edit/${new_item.id}`}">
+                <span class="material-icons text-info">create</span>
+              </router-link>
             </md-table-cell>
           </md-table-row>
         </md-table>
