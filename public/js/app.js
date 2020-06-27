@@ -2007,6 +2007,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
@@ -2027,9 +2028,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.$store.commit("loginSuccess", res);
 
         _this.$router.push({
-          path: '/'
+          path: "/"
         });
       })["catch"](function (error) {
+        _this.error = error;
+
         _this.$store.commit("loginFailed", {
           error: error
         });
@@ -4491,7 +4494,13 @@ var render = function() {
                   })
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _vm.error
+                ? _c("span", { staticStyle: { color: "#F00" } }, [
+                    _vm._v(_vm._s(_vm.error))
+                  ])
+                : _vm._e()
             ],
             1
           ),
@@ -55176,8 +55185,8 @@ var user = Object(_helper_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/pencil_task/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/pencil_task/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/news_app_laravel_vuex/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/news_app_laravel_vuex/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
