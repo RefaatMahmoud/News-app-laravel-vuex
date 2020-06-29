@@ -6,11 +6,15 @@ import storeData from "./store"
 import MainApp from "./components/MainApp";
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-
+import 'vue-material/dist/theme/default.css';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css'
+import '@mdi/font/css/materialdesignicons.css'
+Vue.use(Vuetify);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueMaterial)
+
 
 const store = new Vuex.Store(storeData);
 
@@ -33,6 +37,7 @@ router.beforeEach((to, from, next) => {
 
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify(),
     router,
     store,
     components: {
